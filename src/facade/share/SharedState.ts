@@ -3,7 +3,7 @@ import { IShareFunction, IShareStateContract, IShareStateRouter } from './types'
 
 class GlobalShareState implements IShareStateRouter {
 
-  private static instance: GlobalShareState;
+  private static instance: GlobalShareState | null = null;
 
   private registeredSources: IShareStateContract[] = [];
 
@@ -26,7 +26,7 @@ class GlobalShareState implements IShareStateRouter {
       }
 
       source.receive(data, key);
-    })
+    });
   };
 
 
